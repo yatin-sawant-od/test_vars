@@ -1,0 +1,19 @@
+---
+- name: Test vars
+  hosts: all
+  gather_facts: true
+  
+  tasks:
+
+    - name: vars from inventory_hostname
+      debug: 
+        var: inventory_hostname
+
+    - name: vars from ansible_hostname
+      debug: 
+        var: ansible_hostname
+
+    - name: vars from hostvars
+      debug: 
+        msg: "{{ (lookup('url', 'https://www.google.com/', split_lines=False)) }}"  
+  
